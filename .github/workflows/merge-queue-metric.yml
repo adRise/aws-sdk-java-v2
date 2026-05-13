@@ -17,6 +17,12 @@ jobs:
     if: ${{ github.repository == 'aws/aws-sdk-java-v2' && github.event.action == 'enqueued' }}
 
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@a5ad31d6a139d249332a2605b85202e8c0b78450 # v2.19.1
+        with:
+          use-policy-store: true
+          api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -31,6 +37,12 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ github.repository == 'aws/aws-sdk-java-v2' && github.event.action == 'dequeued' && github.event.reason != 'MERGE'}}
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@a5ad31d6a139d249332a2605b85202e8c0b78450 # v2.19.1
+        with:
+          use-policy-store: true
+          api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
