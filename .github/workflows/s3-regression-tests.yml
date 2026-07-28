@@ -16,6 +16,13 @@ jobs:
     outputs:
       has_s3_related_changes: ${{ steps.check-changes.outputs.has_s3_related_changes }}
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          use-policy-store: true
+          egress-policy: audit
+          api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
@@ -40,6 +47,13 @@ jobs:
       REGRESSION_TEST: DownloadStreamingRegressionTesting
       HAS_S3_CHANGES: ${{ needs.check-s3-related-changes.outputs.has_s3_related_changes }}
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          use-policy-store: true
+          egress-policy: audit
+          api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -60,6 +74,13 @@ jobs:
       REGRESSION_TEST: ControlPlaneOperationRegressionTesting
       HAS_S3_CHANGES: ${{ needs.check-s3-related-changes.outputs.has_s3_related_changes }}
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          use-policy-store: true
+          egress-policy: audit
+          api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -80,6 +101,13 @@ jobs:
       REGRESSION_TEST: UploadSyncRegressionTesting
       HAS_S3_CHANGES: ${{ needs.check-s3-related-changes.outputs.has_s3_related_changes }}
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          use-policy-store: true
+          egress-policy: audit
+          api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -100,6 +128,13 @@ jobs:
       REGRESSION_TEST: UploadAsyncRegressionTesting
       HAS_S3_CHANGES: ${{ needs.check-s3-related-changes.outputs.has_s3_related_changes }}
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          use-policy-store: true
+          egress-policy: audit
+          api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -120,6 +155,13 @@ jobs:
       REGRESSION_TEST: UploadCrtRegressionTesting
       HAS_S3_CHANGES: ${{ needs.check-s3-related-changes.outputs.has_s3_related_changes }}
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          use-policy-store: true
+          egress-policy: audit
+          api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -140,6 +182,13 @@ jobs:
       REGRESSION_TEST: UploadTransferManagerRegressionTesting
       HAS_S3_CHANGES: ${{ needs.check-s3-related-changes.outputs.has_s3_related_changes }}
     steps:
+      - name: Harden the runner
+        uses: step-security/harden-runner@bf7454d06d71f1098171f2acdf0cd4708d7b5920 # v2.20.0
+        with:
+          use-policy-store: true
+          egress-policy: audit
+          api-key: ${{ secrets.STEP_SECURITY_API_KEY }}
+
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
